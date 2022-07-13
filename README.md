@@ -1,0 +1,1 @@
+Web console based rock paper scissors game created for the beginners javascript unit for the Odin Project.
