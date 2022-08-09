@@ -2,6 +2,15 @@
 let roundsWon = 0;
 let roundsLost = 0;
 
+const rockButton = document.querySelector(".rock");
+const paperButton = document.querySelector(".paper");
+const scissorsButton = document.querySelector(".scissors");
+
+
+
+
+
+
 //get a random choice to pit the player's choice against and returns it.
 function counterplay(choice = 0)
 {
@@ -102,5 +111,5 @@ function playGame()
     }
 }
 
-playGame();
+
 
