@@ -6,6 +6,12 @@ const rockButton = document.querySelector(".rock");
 const paperButton = document.querySelector(".paper");
 const scissorsButton = document.querySelector(".scissors");
 
+const roundCounterPlayerList = document.querySelector(".round-counter-player-list");
+const roundCountersPlayer = roundCounterPlayerList.querySelectorAll(".counter-inactive");
+
+const roundCounterComputerList = document.querySelector(".round-counter-computer-list");
+const roundCountersComputer = roundCounterComputerList.querySelectorAll(".counter-inactive");
+
 rockButton.addEventListener('click', () => 
     {
         console.log(playRound("rock"));
@@ -20,11 +26,6 @@ scissorsButton.addEventListener('click', () =>
     {
         console.log(playRound("scissors"));
     });
-
-
-
-
-
 
 
 //get a random choice to pit the player's choice against and returns it.
@@ -69,46 +70,72 @@ function getInput(invalid = false)
 function playRound(p)
 {
     let computerChoice = counterplay();
-    let playerChoice = p
+    let playerChoice = p;
 
     if(computerChoice === playerChoice)
     {
-        return ("You tied!")
+        return ("You tied!");
     }
 
     if(computerChoice === "paper" && playerChoice === "rock")
     {
         roundsLost++;
-        return ("You lost!")
+        currentCounter = roundCountersComputer[roundCountersComputer.length - roundsLost];
+        currentCounter.classList.remove("counter-inactive");
+        currentCounter.classList.add("counter-active");
+        
+        return ("You lost!");
     }
     if(computerChoice === "scissors" && playerChoice === "rock")
     {
         roundsWon ++;
-        return ("You Won!")
+        currentCounter = roundCountersPlayer[(roundsWon - 1)];
+        currentCounter.classList.add("counter-active");
+        currentCounter.classList.remove("counter-inactive");
+        
+        return ("You Won!");
     }
 
     if(computerChoice === "scissors" && playerChoice === "paper")
     {   
         roundsLost++;
-        return ("You lost!")
+        currentCounter = roundCountersComputer[roundCountersComputer.length - roundsLost];
+        currentCounter.classList.remove("counter-inactive");
+        currentCounter.classList.add("counter-active");
+
+        return ("You lost!");
     }
     if(computerChoice === "rock" && playerChoice === "paper")
     {
         roundsWon ++;
-        return ("You Won!")
+        currentCounter = roundCountersPlayer[(roundsWon - 1)];
+        currentCounter.classList.add("counter-active");
+        currentCounter.classList.remove("counter-inactive");
+        
+        return ("You Won!");
+
     }
         
     if(computerChoice === "paper" && playerChoice === "scissors")
     {
-        roundsWon++;
-        return ("You Won!")
+        roundsWon ++;
+        currentCounter = roundCountersPlayer[(roundsWon - 1)];
+        currentCounter.classList.add("counter-active");
+        currentCounter.classList.remove("counter-inactive");
+        return ("You Won!");
+
     }
     if(computerChoice === "rock" && playerChoice === "scissors")
     {   
         roundsLost++;
-        return ("You Lost!")
+        currentCounter = roundCountersComputer[roundCountersComputer.length - roundsLost];
+        currentCounter.classList.remove("counter-inactive");
+        currentCounter.classList.add("counter-active");
+
+        return ("You Lost!");
     }
 }
+
 
 
 
