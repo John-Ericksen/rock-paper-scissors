@@ -6,6 +6,22 @@ const rockButton = document.querySelector(".rock");
 const paperButton = document.querySelector(".paper");
 const scissorsButton = document.querySelector(".scissors");
 
+rockButton.addEventListener('click', () => 
+    {
+        console.log(playRound("rock"));
+    });
+
+paperButton.addEventListener('click', () => 
+    {
+        console.log(playRound("paper"));
+    });
+
+scissorsButton.addEventListener('click', () => 
+    {
+        console.log(playRound("scissors"));
+    });
+
+
 
 
 
@@ -50,10 +66,10 @@ function getInput(invalid = false)
 }
 
 
-function playRound()
+function playRound(p)
 {
     let computerChoice = counterplay();
-    let playerChoice = getInput();
+    let playerChoice = p
 
     if(computerChoice === playerChoice)
     {
