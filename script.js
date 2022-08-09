@@ -110,22 +110,5 @@ function playRound(p)
     }
 }
 
-function playGame()
-{
-    for(let i = 0; i < 5; i++)
-    {
-        console.log(playRound());
-    }
-
-    if(roundsWon > roundsLost)
-    {
-        console.log("You Won The Game!");
-    }
-    else
-    {
-        console.log("You Lost The Game!");
-    }
-}
-
 
 
