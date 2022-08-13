@@ -5,6 +5,10 @@ let gamesWon = 0;
 
 const gamesWonCounter = document.querySelector(".games-won-counter");
 
+const playerPortrait = document.querySelector(".player-portrait");
+const computerPortrait = document.querySelector(".computer-portrait");
+
+
 const rockButton = document.querySelector(".rock");
 const paperButton = document.querySelector(".paper");
 const scissorsButton = document.querySelector(".scissors");
@@ -17,16 +21,19 @@ const roundCountersComputer = roundCounterComputerList.querySelectorAll(".counte
 
 rockButton.addEventListener('click', () => 
     {
+        playerPortrait.src = "img/Rock_(Player).png"
         playRound("rock");
     });
 
 paperButton.addEventListener('click', () => 
     {
+        playerPortrait.src = "img/Paper_(Player).png"
         playRound("paper");
     });
 
 scissorsButton.addEventListener('click', () => 
     {
+        playerPortrait.src = "img/Scissors_(Player).png" 
         playRound("scissors");
     });
 
@@ -38,37 +45,17 @@ function counterplay(choice = 0)
     switch(choice)
     {
         case 1:
+            computerPortrait.src = "img/Rock_(Enemy).png"
             return "rock";
         case 2:
+            computerPortrait.src = "img/Paper(Enemy).png"
             return "paper";
         case 3:
+            computerPortrait.src = "img/Scissors_(Enemy).png"
             return "scissors";
     }
 
 }
-
-//get the players input and returns it.
-function getInput(invalid = false)
-{
-    let prompt = "";
-    if(invalid == true)
-    {
-        prompt = "That choice was invalid! Please choose another!";
-    }
-    else if(invalid === false)
-    {
-        prompt = " What is your choice?"; 
-    }
-
-    let choice = window.prompt(prompt);
-    choice = choice.toLowerCase();
-    if(choice != "paper" && choice != "rock" && choice != "scissors")
-    {
-        return getInput(true);
-    }
-    return choice;
-}
-
 
 function loseRound()
 {
