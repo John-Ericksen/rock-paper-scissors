@@ -1,6 +1,9 @@
 
 let roundsWon = 0;
 let roundsLost = 0;
+let gamesWon = 0;
+
+const gamesWonCounter = document.querySelector(".games-won-counter");
 
 const rockButton = document.querySelector(".rock");
 const paperButton = document.querySelector(".paper");
@@ -147,6 +150,8 @@ function checkWinLoss()
     {
         //put a win function in there!
         console.log("You Win the game!");
+        gamesWon ++;
+        gamesWonCounter.textContent = gamesWon;
         resetScore();
         
     }
