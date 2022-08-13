@@ -14,14 +14,21 @@
 <body>
     <h1 class = "title">Rock! Paper! Scissors!</h1>
 
+    <div class = "games-won">
+        <p class = "games-won-text">Games Won:</p>
+        <p class = "games-won-counter">0</p>
+    </div>
+
     <div class = "round-counter">
         
         <div class = "round-counter-player">
             <h5 class = player-title>Player</h5>
             <div class = "round-counter-player-list">
-                <span class = "counter"></span>
-                <span class = "counter"></span>
-                <span class = "counter"></span>
+                <span class = "counter-inactive"></span>
+                <span class = "counter-inactive"></span>
+                <span class = "counter-inactive"></span>
+                <span class = "counter-inactive"></span>
+                <span class = "counter-inactive"></span>
             </div>
         </div>
 
@@ -29,13 +36,27 @@
         <div class = "round-counter-computer">
             <h5 class = computer-title>Computer</h5>
             <div class = "round-counter-computer-list">
-                <span class = "counter"></span>
-                <span class = "counter"></span>
-                <span class = "counter"></span>
-                <span class="dot"></span>
+                <span class = "counter-inactive"></span>
+                <span class = "counter-inactive"></span>
+                <span class = "counter-inactive"></span>
+                <span class = "counter-inactive"></span>
+                <span class = "counter-inactive"></span>
             </div>
         </div>
     </div>
+
+    <div class = "portraits">
+        <img src="img/Question_Mark.png" class = player-portrait>
+        <img src="img/Question_Mark.png" class = computer-portrait>
+    </div>
+    
+    <div class="buttons">
+        <button class = "rock">Rock</button>
+        <button class = "paper">Paper</button>
+        <button class = "scissors">Scissors</button>
+    </div>
+
+   
 
 </body>
 </html>
