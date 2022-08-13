@@ -14,17 +14,17 @@ const roundCountersComputer = roundCounterComputerList.querySelectorAll(".counte
 
 rockButton.addEventListener('click', () => 
     {
-        console.log(playRound("rock"));
+        playRound("rock");
     });
 
 paperButton.addEventListener('click', () => 
     {
-        console.log(playRound("paper"));
+        playRound("paper");
     });
 
 scissorsButton.addEventListener('click', () => 
     {
-        console.log(playRound("scissors"));
+        playRound("scissors");
     });
 
 
@@ -67,6 +67,24 @@ function getInput(invalid = false)
 }
 
 
+function loseRound()
+{
+    roundsLost++;
+    currentCounter = roundCountersComputer[roundCountersComputer.length - roundsLost];
+    currentCounter.classList.remove("counter-inactive");
+    currentCounter.classList.add("counter-active");
+    checkWinLoss();
+}
+
+function winRound()
+{
+    roundsWon ++;
+    currentCounter = roundCountersPlayer[(roundsWon - 1)];
+    currentCounter.classList.add("counter-active");
+    currentCounter.classList.remove("counter-inactive");
+    checkWinLoss();
+}
+
 function playRound(p)
 {
     let computerChoice = counterplay();
@@ -74,67 +92,72 @@ function playRound(p)
 
     if(computerChoice === playerChoice)
     {
-        return ("You tied!");
+        
     }
 
     if(computerChoice === "paper" && playerChoice === "rock")
     {
-        roundsLost++;
-        currentCounter = roundCountersComputer[roundCountersComputer.length - roundsLost];
-        currentCounter.classList.remove("counter-inactive");
-        currentCounter.classList.add("counter-active");
-        
-        return ("You lost!");
+        loseRound();
     }
     if(computerChoice === "scissors" && playerChoice === "rock")
     {
-        roundsWon ++;
-        currentCounter = roundCountersPlayer[(roundsWon - 1)];
-        currentCounter.classList.add("counter-active");
-        currentCounter.classList.remove("counter-inactive");
-        
-        return ("You Won!");
+       
+        winRound();
     }
 
     if(computerChoice === "scissors" && playerChoice === "paper")
     {   
-        roundsLost++;
-        currentCounter = roundCountersComputer[roundCountersComputer.length - roundsLost];
-        currentCounter.classList.remove("counter-inactive");
-        currentCounter.classList.add("counter-active");
-
-        return ("You lost!");
+       loseRound();
     }
     if(computerChoice === "rock" && playerChoice === "paper")
     {
-        roundsWon ++;
-        currentCounter = roundCountersPlayer[(roundsWon - 1)];
-        currentCounter.classList.add("counter-active");
-        currentCounter.classList.remove("counter-inactive");
-        
-        return ("You Won!");
-
+        winRound();
     }
         
     if(computerChoice === "paper" && playerChoice === "scissors")
     {
-        roundsWon ++;
-        currentCounter = roundCountersPlayer[(roundsWon - 1)];
-        currentCounter.classList.add("counter-active");
-        currentCounter.classList.remove("counter-inactive");
-        return ("You Won!");
-
+        winRound();
     }
     if(computerChoice === "rock" && playerChoice === "scissors")
     {   
-        roundsLost++;
-        currentCounter = roundCountersComputer[roundCountersComputer.length - roundsLost];
-        currentCounter.classList.remove("counter-inactive");
-        currentCounter.classList.add("counter-active");
-
-        return ("You Lost!");
+        loseRound();
     }
 }
+
+function resetScore()
+{
+    for(let i = 0; i < roundCountersPlayer.length; i++)
+    {
+        roundsWon = 0;
+        roundsLost = 0;
+
+        currentCounter = roundCountersPlayer[i];
+        currentCounter.classList.remove("counter-active");
+        currentCounter.classList.add("counter-inactive");
+
+        currentCounter = roundCountersComputer[i];
+        currentCounter.classList.remove("counter-active");
+        currentCounter.classList.add("counter-inactive");
+    }
+}
+
+function checkWinLoss()
+{
+    if(roundsWon == 5)
+    {
+        //put a win function in there!
+        console.log("You Win the game!");
+        resetScore();
+        
+    }
+    else if(roundsLost == 5)
+    {
+        console.log("You lose the game!");
+        resetScore();
+    }
+}
+
+
 
 
 
